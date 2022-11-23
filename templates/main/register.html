@@ -1,0 +1,46 @@
+{%extends 'homepage.html'%}
+{%block content%}
+{% load static %}
+
+<div class="sign section--bg" data-bg="img/section/section.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="sign__content">
+					<!-- registration form -->
+					<form method = 'POST' class="sign__form">
+						{% csrf_token %}
+						<a href="index.html" class="sign__logo">
+							<img src="{{setting.logo.url}}" alt="">
+						</a>
+
+						<div class="sign__group">
+							<input type="text" name='username' class="sign__input" placeholder="Имя">
+						</div>
+
+						<div class="sign__group">
+							<input type="text" name='email' class="sign__input" placeholder="Почта">
+						</div>
+
+						<div class="sign__group">
+							<input type="password" name='password' class="sign__input" placeholder="Пароль">
+						</div>
+						<div class="sign__group">
+							<input type="password" name='confirm_password' class="sign__input" placeholder="Подтвердите пароль">
+						</div>
+						{% comment %} <div class="sign__group sign__group--checkbox">
+							<input id="remember" name="remember" type="checkbox" checked="checked">
+							<label for="remember">I agree to the <a href="privacy.html">Privacy Policy</a></label>
+						</div> {% endcomment %}
+						
+						<button class="sign__btn" type="submit">Зарегестрироваться</button>
+
+						<span class="sign__text">Уже есть аккаунт? <a href="{% url 'login' %}">Войдите!</a></span>
+					</form>
+					<!-- registration form -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
