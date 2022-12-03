@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     
     #apps
     'apps.settings',
-    'apps.videos',
+    'apps.movies',
     'apps.users',
     'apps.categories',
 ]

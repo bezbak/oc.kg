@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<h1 class="home__title"><b>NEW ITEMS</b> OF THIS SEASON</h1>
+				<h1 class="home__title"><b>Новинки</b> сезона</h1>
 
 				<button class="home__nav home__nav--prev" aria-label="prev card" type="button">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z"/></svg>
@@ -31,79 +31,27 @@
 			<div class="col-12">
 				<div class="owl-carousel home__carousel">
 					<!-- card -->
+					{% for movie in movies %}
 					<div class="card card--big">
-						<a href="details1.html" class="card__cover">
-							<img src="{% static 'main/img/covers/cover.jpg'%}" alt="">
+						<a href="{%url 'movie_detail' movie.id%}" class="card__cover">
+							<img src="{{movie.poster.url}}" alt="">
 							<span class="card__play">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 							</span>
 						</a>
 						<div class="card__content">
-							<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
+							<h3 class="card__title"><a href="#">{{movie.title}}</a></h3>
 							<span class="card__category">
-								<a href="#">Action</a>
-								<a href="#">Triler</a>
+								{%for genr in movie.genres.all%}
+								<a href="#">{{genr.name}}</a>
+								{%endfor%}
 							</span>
-							<span class="card__rate"> 8.4</span>
+							<span class="card__rate"> {{movie.calculate_average_rating}}</span>
+							
 						</div>
 					</div>
 					<!-- end card -->
-
-					<!-- card -->
-					<div class="card card--big">
-						<a href="details1.html" class="card__cover">
-							<img src="{% static 'main/img/covers/cover2.jpg'%}" alt="">
-							<span class="card__play">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-							</span>
-						</a>
-						<div class="card__content">
-							<h3 class="card__title"><a href="#">Benched</a></h3>
-							<span class="card__category">
-								<a href="#">Comedy</a>
-							</span>
-							<span class="card__rate"> 7.1</span>
-						</div>
-					</div>
-					<!-- end card -->
-
-					<!-- card -->
-					<div class="card card--big">
-						<a href="details1.html" class="card__cover">
-							<img src="{% static 'main/img/covers/cover3.jpg'%}" alt="">
-							<span class="card__play">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-							</span>
-						</a>
-						<div class="card__content">
-							<h3 class="card__title"><a href="#">Whitney</a></h3>
-							<span class="card__category">
-								<a href="#">Romance</a>
-								<a href="#">Drama</a>
-							</span>
-							<span class="card__rate"> 6.3</span>
-						</div>
-					</div>
-					<!-- end card -->
-
-					<!-- card -->
-					<div class="card card--big">
-						<a href="details1.html" class="card__cover">
-							<img src="{% static 'main/img/covers/cover4.jpg'%}" alt="">
-							<span class="card__play">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-							</span>
-						</a>
-						<div class="card__content">
-							<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-							<span class="card__category">
-								<a href="#">Comedy</a>
-								<a href="#">Drama</a>
-							</span>
-							<span class="card__rate"> 7.9</span>
-						</div>
-					</div>
-					<!-- end card -->
+					{% endfor %}
 				</div>
 			</div>
 		</div>

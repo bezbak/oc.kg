@@ -23,6 +23,7 @@ urlpatterns = [
     path('admininstrator/', admin.site.urls),
     path('', include('apps.settings.urls')),
     path('user/', include('apps.users.urls')),
+    path('movie/', include('apps.movies.urls')),
     path('logout/', LogoutView.as_view(next_page = 'index'), name = "logout"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

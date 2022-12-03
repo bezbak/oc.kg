@@ -1,159 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{%extends 'homepage.html'%}
+{%block content%}
+{% load static %}
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-	<link rel="stylesheet" href="css/nouislider.min.css">
-	<link rel="stylesheet" href="css/plyr.css">
-	<link rel="stylesheet" href="css/photoswipe.css">
-	<link rel="stylesheet" href="css/default-skin.css">
-	<link rel="stylesheet" href="css/main.css">
-
-	<!-- Favicons -->
-	<link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
-	<link rel="apple-touch-icon" href="icon/favicon-32x32.png">
-
-	<meta name="description" content="Online Movies, TV Shows & Cinema HTML Template">
-	<meta name="keywords" content="">
-	<meta name="author" content="Dmitry Volkov">
-	<title>FlixGo – Online Movies, TV Shows & Cinema HTML Template</title>
-
-</head>
-<body class="body">
-
-<!-- header -->
-<header class="header">
-	<div class="header__wrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="header__content">
-						<!-- header logo -->
-						<a href="index.html" class="header__logo">
-							<img src="img/logo.svg" alt="">
-						</a>
-						<!-- end header logo -->
-
-						<!-- header nav -->
-						<ul class="header__nav">
-							<!-- dropdown -->
-							<li class="header__nav-item">
-								<a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
-
-								<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
-									<li><a href="index.html">Home slideshow bg</a></li>
-									<li><a href="index2.html">Home static bg</a></li>
-								</ul>
-							</li>
-							<!-- end dropdown -->
-
-							<!-- dropdown -->
-							<li class="header__nav-item">
-								<a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
-
-								<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-									<li><a href="catalog1.html">Catalog Grid</a></li>
-									<li><a href="catalog2.html">Catalog List</a></li>
-									<li><a href="details1.html">Details Movie</a></li>
-									<li><a href="details2.html">Details TV Series</a></li>
-								</ul>
-							</li>
-							<!-- end dropdown -->
-
-							<li class="header__nav-item">
-								<a href="pricing.html" class="header__nav-link">Pricing Plan</a>
-							</li>
-
-							<li class="header__nav-item">
-								<a href="faq.html" class="header__nav-link">Help</a>
-							</li>
-
-							<!-- dropdown -->
-							<li class="dropdown header__nav-item">
-								<a class="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,10a2,2,0,1,0,2,2A2,2,0,0,0,12,10ZM5,10a2,2,0,1,0,2,2A2,2,0,0,0,5,10Zm14,0a2,2,0,1,0,2,2A2,2,0,0,0,19,10Z"/></svg>
-								</a>
-
-								<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
-									<li><a href="about.html">About</a></li>
-									<li><a href="profile.html">Profile</a></li>
-									<li><a href="signin.html">Sign In</a></li>
-									<li><a href="signup.html">Sign Up</a></li>
-									<li><a href="forgot.html">Forgot password</a></li>
-									<li><a href="privacy.html">Privacy Policy</a></li>
-									<li><a href="contacts.html">Contacts</a></li>
-									<li><a href="404.html">404 Page</a></li>
-								</ul>
-							</li>
-							<!-- end dropdown -->
-						</ul>
-						<!-- end header nav -->
-
-						<!-- header auth -->
-						<div class="header__auth">
-							<button class="header__search-btn" aria-label="search btn" type="button">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
-							</button>
-
-							<!-- dropdown -->
-							<div class="dropdown header__lang">
-								<a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EN</a>
-
-								<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuLang">
-									<li><a href="#">English</a></li>
-									<li><a href="#">Spanish</a></li>
-									<li><a href="#">Russian</a></li>
-								</ul>
-							</div>
-							<!-- end dropdown -->
-
-							<a href="signin.html" class="header__sign-in">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z"/></svg>
-								<span>sign in</span>
-							</a>
-						</div>
-						<!-- end header auth -->
-
-						<!-- header menu btn -->
-						<button class="header__btn" type="button">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
-						<!-- end header menu btn -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- header search -->
-	<form action="#" class="header__search">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="header__search-content">
-						<input type="text" placeholder="I'm looking for...">
-						<button type="button">Search</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-	<!-- end header search -->
-</header>
-<!-- end header -->
+{% include 'include/header.html' %}
 
 <!-- details -->
 <section class="section details">
 	<!-- details background -->
-	<div class="details__bg" data-bg="img/home/home__bg.jpg"></div>
+	<div class="details__bg" data-bg="{% static 'main/img/home/home__bg.jpg'%}"></div>
 	<!-- end details background -->
 
 	<!-- details content -->
@@ -161,7 +15,7 @@
 		<div class="row">
 			<!-- title -->
 			<div class="col-12">
-				<h1 class="details__title">I Dream in Another Language</h1>
+				<h1 class="details__title">{{movie.title}}</h1>
 			</div>
 			<!-- end title -->
 
@@ -170,7 +24,7 @@
 				<div class="card card--details">
 					<!-- card cover -->
 					<div class="card__cover">
-						<img src="img/covers/cover.jpg" alt="">
+						<img src="{{movie.poster.url}}" alt="">
 					</div>
 					<!-- end card cover -->
 
@@ -186,16 +40,13 @@
 						</div>
 
 						<ul class="card__meta">
-							<li><span>Genre:</span> <a href="#">Action</a>
-							<a href="#">Triler</a></li>
-							<li><span>Release year:</span> 2017</li>
-							<li><span>Running time:</span> 120 min</li>
-							<li><span>Country:</span> <a href="#">USA</a> </li>
+							<li><span>Жанры:</span>{% for genre in movie.genres.all %} <a href="#">{{genre.name}}</a>{% endfor %}</li>
+							<li><span>Дата выхода:</span> {{movie.year|date:'Y, d M'}}</li>
+							<li><span>Длительность:</span> {{movie.running_time}} мин</li>
+							<li><span>Страна:</span> <a href="#">{{movie.country}}</a> </li>
 						</ul>
 
-						<div class="card__description card__description--details">
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-						</div>
+						<div class="card__description card__description--details">{{movie.description}}</div>
 					</div>
 					<!-- end card content -->
 				</div>
@@ -204,20 +55,20 @@
 
 			<!-- player -->
 			<div class="col-12 col-xl-6">
-				<video controls crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
+				<video controls crossorigin playsinline poster="{{movie.movie_trailer.url}}" id="player">
 					<!-- Video files -->
-					<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4" size="576">
-					<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
-					<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080">
-					<source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1440p.mp4" type="video/mp4" size="1440">
+					<source src="{{movie.movie_trailer.url}}" type="video/mp4" size="576">
+					<source src="{{movie.movie_trailer.url}}" type="video/mp4" size="720">
+					<source src="{{movie.movie_trailer.url}}" type="video/mp4" size="1080">
+					<source src="{{movie.movie_trailer.url}}" type="video/mp4" size="1440">
 
-					<!-- Caption files -->
+					{% comment %} <!-- Caption files -->
 					<track kind="captions" label="English" srclang="en" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
 					    default>
 					<track kind="captions" label="Français" srclang="fr" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt">
 
-					<!-- Fallback for browsers that don't support the <video> element -->
-					<a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" download>Download</a>
+					<!-- Fallback for browsers that don't support the <video> element --> {% endcomment %}
+					{% comment %} <a href="{{https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4}}" download>Download</a> {% endcomment %}
 				</video>
 			</div>
 			<!-- end player -->
@@ -289,7 +140,7 @@
 									<ul class="comments__list">
 										<li class="comments__item">
 											<div class="comments__autor">
-												<img class="comments__avatar" src="img/user.svg" alt="">
+												<img class="comments__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="comments__name">John Doe</span>
 												<span class="comments__time">30.08.2018, 17:53</span>
 											</div>
@@ -308,7 +159,7 @@
 
 										<li class="comments__item comments__item--answer">
 											<div class="comments__autor">
-												<img class="comments__avatar" src="img/user.svg" alt="">
+												<img class="comments__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="comments__name">John Doe</span>
 												<span class="comments__time">24.08.2018, 16:41</span>
 											</div>
@@ -327,7 +178,7 @@
 
 										<li class="comments__item comments__item--quote">
 											<div class="comments__autor">
-												<img class="comments__avatar" src="img/user.svg" alt="">
+												<img class="comments__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="comments__name">John Doe</span>
 												<span class="comments__time">11.08.2018, 11:11</span>
 											</div>
@@ -346,7 +197,7 @@
 
 										<li class="comments__item">
 											<div class="comments__autor">
-												<img class="comments__avatar" src="img/user.svg" alt="">
+												<img class="comments__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="comments__name">John Doe</span>
 												<span class="comments__time">07.08.2018, 14:33</span>
 											</div>
@@ -365,7 +216,7 @@
 
 										<li class="comments__item">
 											<div class="comments__autor">
-												<img class="comments__avatar" src="img/user.svg" alt="">
+												<img class="comments__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="comments__name">John Doe</span>
 												<span class="comments__time">02.08.2018, 15:24</span>
 											</div>
@@ -401,7 +252,7 @@
 									<ul class="reviews__list">
 										<li class="reviews__item">
 											<div class="reviews__autor">
-												<img class="reviews__avatar" src="img/user.svg" alt="">
+												<img class="reviews__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="reviews__name">Best Marvel movie in my opinion</span>
 												<span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
 
@@ -412,7 +263,7 @@
 
 										<li class="reviews__item">
 											<div class="reviews__autor">
-												<img class="reviews__avatar" src="img/user.svg" alt="">
+												<img class="reviews__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="reviews__name">Best Marvel movie in my opinion</span>
 												<span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
 
@@ -423,7 +274,7 @@
 
 										<li class="reviews__item">
 											<div class="reviews__autor">
-												<img class="reviews__avatar" src="img/user.svg" alt="">
+												<img class="reviews__avatar" src="{% static 'main/img/user.svg'%}" alt="">
 												<span class="reviews__name">Best Marvel movie in my opinion</span>
 												<span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
 
@@ -454,8 +305,8 @@
 							<div class="row row--grid">
 								<!-- gallery item -->
 								<figure class="col-12 col-sm-6 col-xl-4" itemprop="associatedMedia" itemscope>
-									<a href="img/gallery/project-1.jpg" itemprop="contentUrl" data-size="1920x1280">
-										<img src="img/gallery/project-1.jpg" itemprop="thumbnail" alt="Image description" />
+									<a href="{% static 'main/img/gallery/project-1.jpg'%}" itemprop="contentUrl" data-size="1920x1280">
+										<img src="{% static 'main/img/gallery/project-1.jpg'%}" itemprop="thumbnail" alt="Image description" />
 									</a>
 									<figcaption itemprop="caption description">Some image caption 1</figcaption>
 								</figure>
@@ -463,8 +314,8 @@
 
 								<!-- gallery item -->
 								<figure class="col-12 col-sm-6 col-xl-4" itemprop="associatedMedia" itemscope>
-									<a href="img/gallery/project-2.jpg" itemprop="contentUrl" data-size="1920x1280">
-										<img src="img/gallery/project-2.jpg" itemprop="thumbnail" alt="Image description" />
+									<a href="{% static 'main/img/gallery/project-2.jpg'%}" itemprop="contentUrl" data-size="1920x1280">
+										<img src="{% static 'main/img/gallery/project-2.jpg'%}" itemprop="thumbnail" alt="Image description" />
 									</a>
 									<figcaption itemprop="caption description">Some image caption 2</figcaption>
 								</figure>
@@ -472,8 +323,8 @@
 
 								<!-- gallery item -->
 								<figure class="col-12 col-sm-6 col-xl-4" itemprop="associatedMedia" itemscope>
-									<a href="img/gallery/project-3.jpg" itemprop="contentUrl" data-size="1920x1280">
-										<img src="img/gallery/project-3.jpg" itemprop="thumbnail" alt="Image description" />
+									<a href="{% static 'main/img/gallery/project-3.jpg'%}" itemprop="contentUrl" data-size="1920x1280">
+										<img src="{% static 'main/img/gallery/project-3.jpg'%}" itemprop="thumbnail" alt="Image description" />
 									</a>
 									<figcaption itemprop="caption description">Some image caption 3</figcaption>
 								</figure>
@@ -481,8 +332,8 @@
 
 								<!-- gallery item -->
 								<figure class="col-12 col-sm-6 col-xl-4" itemprop="associatedMedia" itemscope>
-									<a href="img/gallery/project-4.jpg" itemprop="contentUrl" data-size="1920x1280">
-										<img src="img/gallery/project-4.jpg" itemprop="thumbnail" alt="Image description" />
+									<a href="{% static 'main/img/gallery/project-4.jpg'%}" itemprop="contentUrl" data-size="1920x1280">
+										<img src="{% static 'main/img/gallery/project-4.jpg'%}" itemprop="thumbnail" alt="Image description" />
 									</a>
 									<figcaption itemprop="caption description">Some image caption 4</figcaption>
 								</figure>
@@ -490,8 +341,8 @@
 
 								<!-- gallery item -->
 								<figure class="col-12 col-sm-6 col-xl-4" itemprop="associatedMedia" itemscope>
-									<a href="img/gallery/project-5.jpg" itemprop="contentUrl" data-size="1920x1280">
-										<img src="img/gallery/project-5.jpg" itemprop="thumbnail" alt="Image description" />
+									<a href="{% static 'main/img/gallery/project-5.jpg'%}" itemprop="contentUrl" data-size="1920x1280">
+										<img src="{% static 'main/img/gallery/project-5.jpg'%}" itemprop="thumbnail" alt="Image description" />
 									</a>
 									<figcaption itemprop="caption description">Some image caption 5</figcaption>
 								</figure>
@@ -499,8 +350,8 @@
 
 								<!-- gallery item -->
 								<figure class="col-12 col-sm-6 col-xl-4" itemprop="associatedMedia" itemscope>
-									<a href="img/gallery/project-6.jpg" itemprop="contentUrl" data-size="1920x1280">
-										<img src="img/gallery/project-6.jpg" itemprop="thumbnail" alt="Image description" />
+									<a href="{% static 'main/img/gallery/project-6.jpg'%}" itemprop="contentUrl" data-size="1920x1280">
+										<img src="{% static 'main/img/gallery/project-6.jpg'%}" itemprop="thumbnail" alt="Image description" />
 									</a>
 									<figcaption itemprop="caption description">Some image caption 6</figcaption>
 								</figure>
@@ -526,7 +377,7 @@
 					<div class="col-6 col-sm-4 col-lg-6">
 						<div class="card">
 							<a href="details1.html" class="card__cover">
-								<img src="img/covers/cover.jpg" alt="">
+								<img src="{% static 'main/img/covers/cover.jpg'%}" alt="">
 								<span class="card__play">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 								</span>
@@ -547,7 +398,7 @@
 					<div class="col-6 col-sm-4 col-lg-6">
 						<div class="card">
 							<a href="details1.html" class="card__cover">
-								<img src="img/covers/cover3.jpg" alt="">
+								<img src="{% static 'main/img/covers/cover3.jpg'%}" alt="">
 								<span class="card__play">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 								</span>
@@ -567,7 +418,7 @@
 					<div class="col-6 col-sm-4 col-lg-6">
 						<div class="card">
 							<a href="details1.html" class="card__cover">
-								<img src="img/covers/cover2.jpg" alt="">
+								<img src="{% static 'main/img/covers/cover2.jpg'%}" alt="">
 								<span class="card__play">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 								</span>
@@ -589,7 +440,7 @@
 					<div class="col-6 col-sm-4 col-lg-6">
 						<div class="card">
 							<a href="details1.html" class="card__cover">
-								<img src="img/covers/cover6.jpg" alt="">
+								<img src="{% static 'main/img/covers/cover6.jpg'%}" alt="">
 								<span class="card__play">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 								</span>
@@ -610,7 +461,7 @@
 					<div class="col-6 col-sm-4 col-lg-6">
 						<div class="card">
 							<a href="details1.html" class="card__cover">
-								<img src="img/covers/cover4.jpg" alt="">
+								<img src="{% static 'main/img/covers/cover4.jpg'%}" alt="">
 								<span class="card__play">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 								</span>
@@ -631,7 +482,7 @@
 					<div class="col-6 col-sm-4 col-lg-6">
 						<div class="card">
 							<a href="details1.html" class="card__cover">
-								<img src="img/covers/cover5.jpg" alt="">
+								<img src="{% static 'main/img/covers/cover5.jpg'%}" alt="">
 								<span class="card__play">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
 								</span>
@@ -662,8 +513,8 @@
 			<div class="col-12 col-md-3">
 				<h6 class="footer__title">Download Our App</h6>
 				<ul class="footer__app">
-					<li><a href="#"><img src="img/Download_on_the_App_Store_Badge.svg" alt=""></a></li>
-					<li><a href="#"><img src="img/google-play-badge.png" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'main/img/Download_on_the_App_Store_Badge.svg'%}" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'main/img/google-play-badge.png'%}" alt=""></a></li>
 				</ul>
 			</div>
 			<!-- end footer list -->
@@ -709,7 +560,6 @@
 			<!-- footer copyright -->
 			<div class="col-12">
 				<div class="footer__copyright">
-					<small>© FlixGo, 2018—2022. Create by <a href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank" rel="noopener">Dmitry Volkov</a>.</small>
 
 					<ul>
 						<li><a href="privacy.html">Terms of Use</a></li>
@@ -723,70 +573,4 @@
 </footer>
 <!-- end footer -->
 
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-	<!-- Background of PhotoSwipe. 
-	It's a separate element, as animating opacity is faster than rgba(). -->
-	<div class="pswp__bg"></div>
-
-	<!-- Slides wrapper with overflow:hidden. -->
-	<div class="pswp__scroll-wrap">
-
-		<!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
-		<!-- don't modify these 3 pswp__item elements, data is added later on. -->
-		<div class="pswp__container">
-			<div class="pswp__item"></div>
-			<div class="pswp__item"></div>
-			<div class="pswp__item"></div>
-		</div>
-
-		<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-		<div class="pswp__ui pswp__ui--hidden">
-
-			<div class="pswp__top-bar">
-
-				<!--  Controls are self-explanatory. Order can be changed. -->
-
-				<div class="pswp__counter"></div>
-
-				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-				<!-- Preloader -->
-				<div class="pswp__preloader">
-					<div class="pswp__preloader__icn">
-						<div class="pswp__preloader__cut">
-							<div class="pswp__preloader__donut"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-
-			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-
-			<div class="pswp__caption">
-				<div class="pswp__caption__center"></div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- JS -->
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.mousewheel.min.js"></script>
-<script src="js/jquery.mCustomScrollbar.min.js"></script>
-<script src="js/wNumb.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/plyr.min.js"></script>
-<script src="js/jquery.morelines.min.js"></script>
-<script src="js/photoswipe.min.js"></script>
-<script src="js/photoswipe-ui-default.min.js"></script>
-<script src="js/main.js"></script>
-</body>
-</html>
+{%endblock%}
