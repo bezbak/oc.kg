@@ -487,9 +487,10 @@ $(document).ready(function () {
 			});
 
 			var thirdValue = document.getElementById('form__slider-value');
-
+			var rating_rate = document.getElementById('rate');
 			thirdSlider.noUiSlider.on('update', function( values, handle ) {
 				thirdValue.innerHTML = values[handle];
+				rating_rate.value = thirdValue.innerHTML
 			});
 		} else {
 			return false;

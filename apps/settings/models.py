@@ -4,7 +4,7 @@ from django.db import models
 class Setting(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=250)
-    logo = models.ImageField(upload_to='logo/')
+    logo = models.FileField(upload_to='logo/')
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     facebook = models.URLField(verbose_name="Facebook", max_length=50, blank = True, null = True)

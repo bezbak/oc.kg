@@ -586,7 +586,7 @@ ul {
     padding: 0;
   }
   .header__logo img {
-    max-width: 120px;
+    max-width: 60px;
   }
   .header__auth {
     margin-right: 54px;
@@ -2461,7 +2461,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .comments__actions button:hover svg {
   opacity: 1;
 }
-.comments__actions button:last-child {
+.comments__actions form:last-child {
   margin-right: 0;
 }
 .comments__rate {
@@ -2491,7 +2491,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   opacity: 0.7;
   transition: opacity 0.4s ease;
 }
-.comments__rate button:last-child {
+.comments__rate form:last-child {
   margin-right: 0;
 }
 .comments__rate button:last-child svg {
@@ -2499,11 +2499,11 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   margin-top: 1px;
   fill: #c22b3c;
 }
-.comments__rate button:first-child svg {
+.comments__rate form:nth-child(1) svg {
   margin-right: 6px;
   fill: #0cb457;
 }
-.comments__rate button:first-child:before {
+.comments__rate form:nth-child(1) button:before {
   content: '';
   position: absolute;
   display: block;

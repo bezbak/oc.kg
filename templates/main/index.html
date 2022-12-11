@@ -46,7 +46,10 @@
 								<a href="#">{{genr.name}}</a>
 								{%endfor%}
 							</span>
-							<span class="card__rate"> {{movie.calculate_average_rating}}</span>
+							<span class="card__rate"> 
+								{%for movie_name, num in reviews.items%} 
+								{% if movie_name == movie.title %} {{num}}{% endif %}	
+								{% endfor %}</span>
 							
 						</div>
 					</div>
