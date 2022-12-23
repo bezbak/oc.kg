@@ -25,3 +25,8 @@ class User(AbstractUser):
 
     def __str__(self):
         return  self.username
+
+class WatchedMovie(models.Model):
+    watched_movie = models.ForeignKey('movies.Movie', on_delete=models.CASCADE, related_name='watched_movie')
+    watched_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='watched_user')
+    
