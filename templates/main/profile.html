@@ -5,19 +5,19 @@
 {% include 'include/header.html' %}
 
 <!-- page title -->
-<section class="section section--first section--bg" data-bg="img/section/section.jpg">
+<section class="section section--first section--bg" data-bg="{% static 'main/img/section/section.jpg'%}">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<div class="section__wrap">
 					<!-- section title -->
-					<h1 class="section__title">My FlixGo</h1>
+					<h1 class="section__title">Мой аккаунт</h1>
 					<!-- end section title -->
 
 					<!-- breadcrumb -->
 					<ul class="breadcrumb">
-						<li class="breadcrumb__item"><a href="index.html">Home</a></li>
-						<li class="breadcrumb__item breadcrumb__item--active">Profile</li>
+						<li class="breadcrumb__item"><a href="{%url 'index'%}">Главная</a></li>
+						<li class="breadcrumb__item breadcrumb__item--active">Аккаунт</li>
 					</ul>
 					<!-- end breadcrumb -->
 				</div>
@@ -37,26 +37,26 @@
 					<div class="profile__content">
 						<div class="profile__user">
 							<div class="profile__avatar">
-								<img src="img/user.svg" alt="">
+								<img src="{{user.profile_image.url}}" alt="">
 							</div>
 							<div class="profile__meta">
-								<h3>Username</h3>
-								<span>FlixGo ID: 23562</span>
+								<h3>{{user.username}}</h3>
+								<span>OC.kg ID: {{user.id}}</span>
 							</div>
 						</div>
 
 						<!-- content tabs nav -->
 						<ul class="nav nav-tabs content__tabs content__tabs--profile" id="content__tabs" role="tablist">
 							<li class="nav-item" role="presentation">
-								<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Profile</a>
+								<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Аккаунт</a>
 							</li>
 
 							<li class="nav-item" role="presentation">
-								<a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Subscription</a>
+								<a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Подписки</a>
 							</li>
 
 							<li class="nav-item" role="presentation">
-								<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Settings</a>
+								<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Настройки</a>
 							</li>
 						</ul>
 						<!-- end content tabs nav -->
@@ -64,17 +64,17 @@
 						<!-- content mobile tabs nav -->
 						<div class="content__mobile-tabs content__mobile-tabs--profile" id="content__mobile-tabs">
 							<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<input type="button" value="Profile">
+								<input type="button" value="Аккаунт">
 								<span></span>
 							</div>
 
 							<div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
 								<ul class="nav nav-tabs" role="tablist">
-									<li class="nav-item"><a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Profile</a></li>
+									<li class="nav-item"><a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Аккаунт</a></li>
 
-									<li class="nav-item"><a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Subscription</a></li>
+									<li class="nav-item"><a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Подписки</a></li>
 
-									<li class="nav-item"><a class="nav-link" id="3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Settings</a></li>
+									<li class="nav-item"><a class="nav-link" id="3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Настройки</a></li>
 								</ul>
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 						<div class="stats">
 							<span>Premium plan</span>
 							<p>$19.99</p>
-							<img src="img/credit-card.svg" alt="">
+							<img src="{% static 'main/img/credit-card.svg'%}" alt="">
 						</div>
 					</div>
 					<!-- end stats -->
@@ -111,7 +111,7 @@
 						<div class="stats">
 							<span>Films watched</span>
 							<p>1 172</p>
-							<img src="img/film.svg" alt="">
+							<img src="{% static 'main/img/film.svg'%}" alt="">
 						</div>
 					</div>
 					<!-- end stats -->
@@ -119,9 +119,9 @@
 					<!-- stats -->
 					<div class="col-12 col-sm-6 col-xl-3">
 						<div class="stats">
-							<span>Your comments</span>
-							<p>2 573</p>
-							<img src="img/comments.svg" alt="">
+							<span>Ваши комментарии</span>
+							<p>{{user.comment_user.count}}</p>
+							<img src="{% static 'main/img/comments.svg'%}" alt="">
 						</div>
 					</div>
 					<!-- end stats -->
@@ -129,9 +129,9 @@
 					<!-- stats -->
 					<div class="col-12 col-sm-6 col-xl-3">
 						<div class="stats">
-							<span>Your reviews</span>
-							<p>1 021</p>
-							<img src="img/star-half-alt.svg" alt="">
+							<span>Ваши отзывы</span>
+							<p>{{user.review_user.count}}</p>
+							<img src="{% static 'main/img/star-half-alt.svg'%}" alt="">
 						</div>
 					</div>
 					<!-- end stats -->
@@ -140,12 +140,7 @@
 					<div class="col-12 col-xl-6">
 						<div class="dashbox">
 							<div class="dashbox__title">
-								<h3><img src="img/film.svg" alt=""> Movies for you</h3>
-
-								<div class="dashbox__wrap">
-									<a class="dashbox__refresh" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,11a1,1,0,0,0-1,1,8.05,8.05,0,1,1-2.22-5.5h-2.4a1,1,0,0,0,0,2h4.53a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4.77A10,10,0,1,0,22,12,1,1,0,0,0,21,11Z"/></svg></a>
-									<a class="dashbox__more" href="catalog.html">View All</a>
-								</div>
+								<h3><img src="{% static 'main/img/film.svg'%}" alt="">Фильмы для вас</h3>
 							</div>
 
 							<div class="dashbox__table-wrap">
@@ -153,82 +148,30 @@
 									<thead>
 										<tr>
 											<th>ID</th>
-											<th>TITLE</th>
-											<th>CATEGORY</th>
-											<th>RATING</th>
+											<th>НАЗВАНИЕ</th>
+											<th>КАТЕГОРИЯ</th>
+											<th>РЕЙТИНГ</th>
 										</tr>
 									</thead>
 									<tbody>
+										{% for movie in recomandations %}
 										<tr>
 											<td>
-												<div class="main__table-text">321</div>
+												<div class="main__table-text">{{movie.id}}</div>
 											</td>
 											<td>
-												<div class="main__table-text"><a href="#">I Dream in Another Language</a></div>
+												<div class="main__table-text"><a href="{% url 'movie_detail' movie.id %}">{{movie.title}}</a></div>
 											</td>
 											<td>
-												<div class="main__table-text">Movie</div>
+												<div class="main__table-text">{{movie.category.name}}</div>
 											</td>
 											<td>
-												<div class="main__table-text main__table-text--rate">9.2</div>
+												<div class="main__table-text main__table-text--rate">
+													{{movie.rating|safe}}
+												</div>
 											</td>
 										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">54</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">Benched</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">Movie</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">9.1</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">670</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">Whitney</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">TV Series</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">9.0</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">241</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">Blindspotting 2</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">TV Series</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">8.9</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">22</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">Blindspotting</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">TV Series</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">8.9</div>
-											</td>
-										</tr>
+										{% endfor %}
 									</tbody>
 								</table>
 							</div>
@@ -240,7 +183,7 @@
 					<div class="col-12 col-xl-6">
 						<div class="dashbox">
 							<div class="dashbox__title">
-								<h3><img src="img/star-half-alt.svg" alt=""> Latest reviews</h3>
+								<h3><img src="{% static 'main/img/star-half-alt.svg'%}" alt=""> Latest reviews</h3>
 
 								<div class="dashbox__wrap">
 									<a class="dashbox__refresh" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,11a1,1,0,0,0-1,1,8.05,8.05,0,1,1-2.22-5.5h-2.4a1,1,0,0,0,0,2h4.53a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4.77A10,10,0,1,0,22,12,1,1,0,0,0,21,11Z"/></svg></a>
@@ -482,8 +425,8 @@
 			<div class="col-12 col-md-3">
 				<h6 class="footer__title">Download Our App</h6>
 				<ul class="footer__app">
-					<li><a href="#"><img src="img/Download_on_the_App_Store_Badge.svg" alt=""></a></li>
-					<li><a href="#"><img src="img/google-play-badge.png" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'main/img/Download_on_the_App_Store_Badge.svg'%}" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'main/img/google-play-badge.png'%}" alt=""></a></li>
 				</ul>
 			</div>
 			<!-- end footer list -->

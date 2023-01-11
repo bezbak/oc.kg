@@ -4,30 +4,6 @@
 
 {% include 'include/header.html' %}
 
-<!-- page title -->
-<section class="section section--first section--bg" data-bg="img/section/section.jpg">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="section__wrap">
-					<!-- section title -->
-					<h1 class="section__title">Результаты поиска</h1>
-					<!-- end section title -->
-
-					<!-- breadcrumb -->
-					<ul class="breadcrumb">
-						<li class="breadcrumb__item"><a href="{% url 'index' %}">Главная</a></li>
-						<li class="breadcrumb__item breadcrumb__item--active">Поиск</li>
-					</ul>
-					<!-- end breadcrumb -->
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- end page title -->
-
-<!-- filter -->
 <div class="filter">
 	<div class="container">
 		<div class="row">
@@ -153,31 +129,32 @@
 <div class="catalog">
 	<div class="container">
 		<div class="row row--grid">
-            {% for movie in movies %}
 			<!-- card -->
-                <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-                    <div class="card">
-                        <a href="{% url 'movie_detail' movie.id %}" class="card__cover">
-                            <img src="{{movie.poster.url}}" alt="">
-                            <span class="card__play">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-                            </span>
-                        </a>
-                        <div class="card__content">
-                            <h3 class="card__title"><a href="{% url 'movie_detail' movie.id %}">{{movie.title}}</a></h3>
-                            <span class="card__category">
-                                {%for genr in movie.genres.all%}
-                                    <a href="#">{{genr.name}}</a>
-                                {%endfor%}
-                            </span>
-                            <span class="card__rate">
-								{{movie.rating|truncatechars:4|safe}}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-			<!-- end card -->
+            {% for movie in movies %}
+			<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+				<div class="card">
+					<a href="{% url 'movie_detail' movie.id %}" class="card__cover">
+						<img src="{{movie.poster.url}}" alt="">
+						<span class="card__play">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
+						</span>
+					</a>
+					<div class="card__content">
+						<h3 class="card__title"><a href="#">{{movie.title}}</a></h3>
+						<span class="card__category">
+							{%for genr in movie.genres.all%}
+                                <a href="#">{{genr.name}}</a>
+                            {%endfor%}
+						</span>
+						<span class="card__rate">
+							{{movie.rating|truncatechars:4|safe}}
+
+                        </span>
+					</div>
+				</div>
+			</div>
             {% endfor %}
+			<!-- end card -->
 		</div>
 
 		<div class="row">
@@ -201,6 +178,7 @@
 	</div>
 </div>
 <!-- end catalog -->
+
 <!-- footer -->
 <footer class="footer">
 	<div class="container">
@@ -269,5 +247,4 @@
 	</div>
 </footer>
 <!-- end footer -->
-
-{%endblock%}
+{% endblock %}

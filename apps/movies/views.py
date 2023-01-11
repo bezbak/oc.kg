@@ -3,35 +3,13 @@ from apps.movies.models import Movie,Comments, Reviews, CommentLikes, CommentDis
 from django.db.models import Q
 from apps.settings.models import Setting
 from apps.categories.models import Genre
+from django.db.models import Sum, Count
 from datetime import date
 # Create your views here.
 def movie_detail(request, id):
     setting=Setting.objects.latest('id')
     movie=Movie.objects.get(id=id)
     recomandations=Movie.objects.all().order_by('?')[:6]
-    # ! Рейтинг для видео среднее значение
-    review1=0
-    rev1=0
-    for rev in movie.review_movie.all():
-        review1 +=1
-        rev1 +=rev.number
-    try:
-        review=rev1/ review1
-    except:
-        review=10
-    # ! Рейтинт для рекомендаций среднее значение
-    reviews={}
-    for movie2 in recomandations:
-        rev_count=0
-        rev_num=0
-        for rev in movie2.review_movie.all():
-            rev_count += 1
-            rev_num += rev.number
-        try:
-            rev_mid=rev_num/ rev_count
-        except:
-            rev_mid=10
-        reviews.setdefault(movie2.title, str(rev_mid)[:4])
     if request.method == 'POST':
         movie=Movie.objects.get(id=id)
         
@@ -89,14 +67,19 @@ def movie_detail(request, id):
             text=request.POST.get('text')
             rating=request.POST.get('rating')
             review=Reviews.objects.create(user=request.user, movie=movie, title=title, text=text, number=rating)
+            mid_rate = movie.review_movie.aggregate(
+                numbers = Sum('number'),
+                len = Count('id')
+            )
+            movie.rating = float(str(mid_rate['numbers'] / mid_rate['len'])[:4])
+            movie.save()
+            
             review.save()
             return redirect('movie_detail', movie.id)
     context={
         'setting': setting,
         'movie': movie,
-        'review' : str(review)[:4],
         'recomandations':recomandations,
-        'reviews':reviews
     }
     
     return render(request, 'main/details1.html', context)
@@ -111,18 +94,6 @@ def movie_search(request):
     review_end=request.GET.get('reviews_end')
     release_year=request.GET.get('release_year')
     release_year2=request.GET.get('release_year2')
-    reviews={}
-    for movie in movies:
-        rev_count=0
-        rev_num=0
-        for rev in movie.review_movie.all():
-            rev_count += 1
-            rev_num += rev.number
-        try:
-            rev_mid=rev_num/ rev_count
-        except:
-            rev_mid=10
-        reviews.setdefault(movie.title, str(rev_mid)[:4])
     if search_key:
         movies=Movie.objects.filter(Q(title__icontains=search_key) | Q(description__icontains=search_key))
     genre_list = []
@@ -130,15 +101,26 @@ def movie_search(request):
         if genre == genreswe.name:
             genre_list.append(genreswe.id)
     if genre or review_start or release_year:
-        movies=Movie.objects.filter(genres__in=genre_list,year__year__range=[release_year, release_year2])
-        if float(reviews[movie.title]) >= float(review_start) and float(reviews[movie.title]) <= float(review_end):
-            movies=Movie.objects.filter(genres__in=genre_list,year__year__range=[release_year, release_year2])
+        movies=Movie.objects.filter(genres__in=genre_list,year__year__range=[release_year, release_year2], rating__range = [review_start, review_end])
     context={
         'setting':setting,
         'movies':movies,
-        'reviews':reviews,
         'genres':genres,
         'genre_list':genre_list
         
     }
     return render(request, 'main/search.html', context)
+
+def movie_catalog(request, slug):
+    catalog = {
+        'movie': 'Фильм',
+        'tv_show': 'Сериал',
+        'cartoon': 'Мультфильм'
+    }
+    movies = Movie.objects.all().filter(category__name = catalog[slug])
+    setting=Setting.objects.latest('id')
+    context = {
+        'setting': setting,
+        'movies': movies,
+    }
+    return render(request, 'main/movie_catalog.html', context)

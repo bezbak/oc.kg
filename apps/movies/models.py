@@ -31,6 +31,7 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre, verbose_name="Жанр")
     category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True)
     draft = models.BooleanField("Черновик", default=False)
+    rating = models.FloatField(default=10)
     
     def __str__(self):
         return self.title
