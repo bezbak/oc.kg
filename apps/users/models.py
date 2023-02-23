@@ -7,7 +7,8 @@ class User(AbstractUser):
     profile_image = models.ImageField(
         upload_to='profile_image/',
         blank=True,
-        null=True
+        null=True,
+        default='https://cdn.vectorstock.com/i/preview-1x/66/14/default-avatar-photo-placeholder-profile-picture-vector-21806614.jpg'
     )
     email = models.EmailField(
         verbose_name='Почта'

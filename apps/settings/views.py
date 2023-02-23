@@ -12,4 +12,9 @@ def index(request):
         'movies': movies,
         'new_releases':new_releases
     }
-    return  render(request, 'main/index.html', context)
+    return  render(request, 'main/settings/index.html', context)
+def update_error(request):
+    return render(request,'main/settings/update_error.html')
+def wrong_username_pass(request):
+    return render(request,'main/settings/wrong_username_pass.html')
+    

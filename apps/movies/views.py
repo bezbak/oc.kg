@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from apps.movies.models import Movie,Comments, Reviews, CommentLikes, CommentDisLikes
-from django.db.models import Q
+from django.db.models import Q,Sum, Count
 from apps.settings.models import Setting
 from apps.categories.models import Genre
-from django.db.models import Sum, Count
 from datetime import date
 # Create your views here.
 def movie_detail(request, id):
@@ -70,8 +69,9 @@ def movie_detail(request, id):
             mid_rate = movie.review_movie.aggregate(
                 numbers = Sum('number'),
                 len = Count('id')
-            )
-            movie.rating = float(str(mid_rate['numbers'] / mid_rate['len'])[:4])
+            )   
+            rate = str(mid_rate['numbers'] / mid_rate['len'])[:4]
+            movie.rating = float(rate)
             movie.save()
             
             review.save()
@@ -82,7 +82,7 @@ def movie_detail(request, id):
         'recomandations':recomandations,
     }
     
-    return render(request, 'main/details1.html', context)
+    return render(request, 'main/movies/details1.html', context)
 
 def movie_search(request):
     movies=Movie.objects.all()
@@ -109,7 +109,7 @@ def movie_search(request):
         'genre_list':genre_list
         
     }
-    return render(request, 'main/search.html', context)
+    return render(request, 'main/movies/search.html', context)
 
 def movie_catalog(request, slug):
     catalog = {
@@ -123,4 +123,4 @@ def movie_catalog(request, slug):
         'setting': setting,
         'movies': movies,
     }
-    return render(request, 'main/movie_catalog.html', context)
+    return render(request, 'main/movies/movie_catalog.html', context)

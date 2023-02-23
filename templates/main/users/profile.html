@@ -183,12 +183,7 @@
 					<div class="col-12 col-xl-6">
 						<div class="dashbox">
 							<div class="dashbox__title">
-								<h3><img src="{% static 'main/img/star-half-alt.svg'%}" alt=""> Latest reviews</h3>
-
-								<div class="dashbox__wrap">
-									<a class="dashbox__refresh" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,11a1,1,0,0,0-1,1,8.05,8.05,0,1,1-2.22-5.5h-2.4a1,1,0,0,0,0,2h4.53a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4.77A10,10,0,1,0,22,12,1,1,0,0,0,21,11Z"/></svg></a>
-									<a class="dashbox__more" href="reviews.html">View All</a>
-								</div>
+								<h3><img src="{% static 'main/img/star-half-alt.svg'%}" alt="">Последние отзывы</h3>
 							</div>
 
 							<div class="dashbox__table-wrap">
@@ -196,82 +191,30 @@
 									<thead>
 										<tr>
 											<th>ID</th>
-											<th>ITEM</th>
-											<th>AUTHOR</th>
-											<th>RATING</th>
+											<th>ФИЛЬМ</th>
+											<th>АВТОР</th>
+											<th>РЕЙТИНГ</th>
 										</tr>
 									</thead>
 									<tbody>
+										{% for review in user.review_user.all|dictsort:"id" %}
+										{% if forloop.counter <= 5 %}
 										<tr>
 											<td>
-												<div class="main__table-text">23</div>
+												<div class="main__table-text">{{review.id}}</div>
 											</td>
 											<td>
-												<div class="main__table-text"><a href="#">I Dream in Another Language</a></div>
+												<div class="main__table-text"><a href="{% url 'movie_detail' review.movie.id%}">{{review.movie.title}}</a></div>
 											</td>
 											<td>
-												<div class="main__table-text">John Doe</div>
+												<div class="main__table-text">{{review.user.username}}</div>
 											</td>
 											<td>
-												<div class="main__table-text main__table-text--rate">7.2</div>
+												<div class="main__table-text main__table-text--rate">{{review.number}}</div>
 											</td>
 										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">24</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">Benched</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">John Doe</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">6.3</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">25</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">Whitney</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">John Doe</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">8.4</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">26</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">Blindspotting</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">John Doe</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">9.0</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="main__table-text">27</div>
-											</td>
-											<td>
-												<div class="main__table-text"><a href="#">I Dream in Another Language</a></div>
-											</td>
-											<td>
-												<div class="main__table-text">John Doe</div>
-											</td>
-											<td>
-												<div class="main__table-text main__table-text--rate">7.7</div>
-											</td>
-										</tr>
+										{% endif %}
+										{% endfor %}
 									</tbody>
 								</table>
 							</div>
@@ -331,42 +274,49 @@
 				<div class="row row--grid">
 					<!-- details form -->
 					<div class="col-12 col-lg-6">
-						<form action="#" class="profile__form">
+						<form method="POST" enctype="multipart/form-data" class="profile__form">
+							{% csrf_token %}
 							<div class="row">
 								<div class="col-12">
-									<h4 class="profile__title">Profile details</h4>
+									<h4 class="profile__title">Обновление профиля</h4>
 								</div>
 
 								<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 									<div class="profile__group">
 										<label class="profile__label" for="username">Username</label>
-										<input id="username" type="text" name="username" class="profile__input" placeholder="User 123">
+										<input id="username" type="text" name="username" class="profile__input" value="{{user.username}}">
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 									<div class="profile__group">
 										<label class="profile__label" for="email">Email</label>
-										<input id="email" type="text" name="email" class="profile__input" placeholder="email@email.com">
+										<input id="email" type="text" name="email" class="profile__input" value="{{user.email}}">
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 									<div class="profile__group">
-										<label class="profile__label" for="firstname">First Name</label>
-										<input id="firstname" type="text" name="firstname" class="profile__input" placeholder="John">
+										<label class="profile__label" for="firstname">Имя</label>
+										<input id="firstname" type="text" name="first_name" class="profile__input" value="{{user.first_name|default_if_none:'Ваше имя'}}">
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 									<div class="profile__group">
-										<label class="profile__label" for="lastname">Last Name</label>
-										<input id="lastname" type="text" name="lastname" class="profile__input" placeholder="Doe">
+										<label class="profile__label" for="lastname">Фамилия</label>
+										<input type="text" name="last_name" class="profile__input" value="{{user.last_name|default_if_none:'Ваше фамилия'}}">
+									</div>
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-12">
+									<div class="profile__group">
+										<label class="profile__label" for="lastname">Фотография профиля</label>
+										<input type="file" name="image" class="profile__input">
 									</div>
 								</div>
 
 								<div class="col-12">
-									<button class="profile__btn" type="button">Save</button>
+									<button name='profile_update' class="profile__btn" type="submit">Сохранить</button>
 								</div>
 							</div>
 						</form>
@@ -375,35 +325,36 @@
 
 					<!-- password form -->
 					<div class="col-12 col-lg-6">
-						<form action="#" class="profile__form">
+						<form method='POST'class="profile__form">
+							{% csrf_token %}
 							<div class="row">
 								<div class="col-12">
-									<h4 class="profile__title">Change password</h4>
+									<h4 class="profile__title">Изменить пароль</h4>
 								</div>
 
 								<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 									<div class="profile__group">
-										<label class="profile__label" for="oldpass">Old Password</label>
+										<label class="profile__label" for="oldpass">Старый пароль</label>
 										<input id="oldpass" type="password" name="oldpass" class="profile__input">
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 									<div class="profile__group">
-										<label class="profile__label" for="newpass">New Password</label>
+										<label class="profile__label" for="newpass">Новый пароль</label>
 										<input id="newpass" type="password" name="newpass" class="profile__input">
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6 col-lg-12 col-xl-6">
 									<div class="profile__group">
-										<label class="profile__label" for="confirmpass">Confirm New Password</label>
+										<label class="profile__label" for="confirmpass">Подтвердите новый пароль</label>
 										<input id="confirmpass" type="password" name="confirmpass" class="profile__input">
 									</div>
 								</div>
 
 								<div class="col-12">
-									<button class="profile__btn" type="button">Change</button>
+									<button class="profile__btn" type="submit" name='update_password'>Изменить</button>
 								</div>
 							</div>
 						</form>
